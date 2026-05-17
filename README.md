@@ -9,12 +9,12 @@ A containerized web application built with Flask and PostgreSQL, orchestrated wi
 - **Docker & Docker Compose** — Containerization
 
 ## Architecture
-┌─────────────────┐     ┌─────────────────┐
-│   Flask App     │────▶│   PostgreSQL    │
-│   Port 5000     │     │   Port 5432     │
-└─────────────────┘     └─────────────────┘
-│
-Docker Network
+
+```
+Flask App (Port 5000)  →  PostgreSQL DB (Port 5432)
+        ↕
+  Docker Network (docker-compose)
+```
 ## Getting Started
 
 ### Prerequisites
