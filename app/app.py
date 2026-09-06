@@ -4,12 +4,18 @@ import os
 
 app = Flask(__name__)
 
+def _require_env(name):
+    value = os.environ.get(name)
+    if not value:
+        raise RuntimeError(f"Missing required environment variable: {name}")
+    return value
+
 def get_db():
     conn = psycopg2.connect(
-        host=os.environ['DB_HOST'],
-        database=os.environ['DB_NAME'],
-        user=os.environ['DB_USER'],
-        password=os.environ['DB_PASSWORD']
+        host=_require_env('DB_HOST'),
+        database=_require_env('DB_NAME'),
+        user=_require_env('DB_USER'),
+        password=_require_env('DB_PASSWORD')
     )
     return conn
 
